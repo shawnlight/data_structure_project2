@@ -1,0 +1,31 @@
+
+insert a         0 0 10 10
+  insert b      10 0 20 20
+insert c 9 9 2 2
+
+dump
+ regionsearch   100     100      1 1
+
+
+
+intersections
+  insert d      9 0 3 3
+intersections
+
+remove  light
+
+
+remove  a
+search  a
+
+search b
+
+remove 10 0        20        20
+dump 
+
+remove c
+remove d
+
+dump
+
+
