@@ -26,6 +26,16 @@ public class BST {
      *            the rectangle to be inserted
      */
     public void insert(Rectangle rectangle) {
+        char firstChar = rectangle.getName().charAt(0);
+        if(!Character.isLetter(firstChar)) {
+            reject(rectangle);
+            return;
+        }
+
+        if (rectangle.notValid()) {
+            reject(rectangle);
+            return;
+        }
         root = insertHelp(root, rectangle);
         nodeNum++;
     }
@@ -42,12 +52,6 @@ public class BST {
      * @return
      */
     private Node insertHelp(Node root, Rectangle rectangle) {
-
-        if (rectangle.notValid()) {
-            reject(rectangle);
-            nodeNum--;
-            return null;
-        }
         if (root == null) {
             Node node = new Node(rectangle);
             System.out.println("Rectangle accepted:(" + rectangle.getName()
@@ -69,6 +73,7 @@ public class BST {
             if (sameDim(rootRec, rectangle)) {
                 reject(rectangle);
                 nodeNum--;
+                return null;
             }
             else {
                 root.left = insertHelp(root.left, rectangle);

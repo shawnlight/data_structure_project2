@@ -12,6 +12,21 @@ public class BSTtest extends TestCase {
      * test the BST class
      */
     public void testInsert() {
+        System.out.println("##############not valid case################");
+        BST bstTest = new BST();
+        Rectangle recValid1 = new Rectangle("a",1,0,2,4);
+        Rectangle recNotValid1 = new Rectangle("_a",1,0,2,4);
+        Rectangle recNotValid2 = new Rectangle("a",1,0,2,0);
+        bstTest.dump();
+        bstTest.insert(recValid1);
+        bstTest.dump();
+        bstTest.insert(recNotValid1);
+        bstTest.dump();
+        bstTest.insert(recNotValid2);
+        bstTest.dump();
+        
+        
+        
         System.out.println("##############simple case################");
         BST bst = new BST();
         bst.dump();

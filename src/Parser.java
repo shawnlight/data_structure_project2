@@ -38,7 +38,6 @@ public class Parser {
      * 
      */
     public boolean readCmdFile(File theFile) throws IOException {
-        String type;
         Scanner sc = new Scanner(theFile);
         while (sc.hasNext()) { // While the scanner has information to read
             String cmd = sc.next(); // Read the next term
@@ -46,15 +45,10 @@ public class Parser {
                 String nameString = sc.nextLine().trim().replaceAll("\\s{1,}",
                     " ");
                 String[] input = nameString.split(" ");
-                if (Character.isAlphabetic(nameString.charAt(0))) {
-                    myWorld.insert(input[0], Integer.parseInt(input[1]), Integer
-                        .parseInt(input[2]), Integer.parseInt(input[3]), Integer
-                            .parseInt(input[4]));
+                myWorld.insert(input[0], Integer.parseInt(input[1]), Integer
+                    .parseInt(input[2]), Integer.parseInt(input[3]), Integer
+                        .parseInt(input[4]));
 
-                }
-                else {
-                    System.out.println("name should start with letter");
-                }
             }
 
             else if (cmd.equals("remove")) {
@@ -82,10 +76,10 @@ public class Parser {
                 String nameString = sc.nextLine().trim().replaceAll("\\s{1,}",
                     " ");
                 String[] region = nameString.split(" ");
-                myWorld.regionsearch(Integer.parseInt(region[0]), Integer.parseInt(
-                    region[1]), Integer.parseInt(region[2]), Integer.parseInt(
-                        region[3]));
-               
+                myWorld.regionsearch(Integer.parseInt(region[0]), Integer
+                    .parseInt(region[1]), Integer.parseInt(region[2]), Integer
+                        .parseInt(region[3]));
+
             }
             else if (cmd.equals("intersections")) {
                 myWorld.intersections();
