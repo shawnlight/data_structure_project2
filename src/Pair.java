@@ -6,8 +6,8 @@
  *
  */
 public class Pair {
-    public Rectangle rec1;
-    public Rectangle rec2;
+    private Rectangle rec1;
+    private Rectangle rec2;
 
     /**
      * constructor
@@ -32,8 +32,8 @@ public class Pair {
      *         if two pair are the same
      */
     public boolean samePair(Pair pair) {
-        return (pair.rec1.sameRec(rec1) && pair.rec2.sameRec(rec2))
-            || (pair.rec2.sameRec(rec1) && pair.rec1.sameRec(rec2));
+        return (pair.rec1.equals(rec1) && pair.rec2.equals(rec2))
+            || (pair.rec2.equals(rec1) && pair.rec1.equals(rec2));
     }
 
 
@@ -64,5 +64,17 @@ public class Pair {
         str.append(")");
         System.out.println(str);
     }
+
+
+    public Rectangle getRec1() {
+        return rec1;
+    }
+
+
+    public Rectangle getRec2() {
+        return rec2;
+    }
+    
+    
 
 }

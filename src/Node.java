@@ -1,48 +1,57 @@
-
 /**
- * Node class for BST
+ * Stub for Node class
  * 
- * @author light
- * @version {2020 fall}
- *
+ * @author CS Staff
+ * @param <T>
+ *            the generic type; extends Comparable
  */
-public class Node {
 
-    private Rectangle rectangle;
-    Node left;
-    Node right;
+public class Node<T extends Comparable<T>> {
 
-    /**
-     * constructor
-     * 
-     * @param rectangle
-     *            the rectangle in the node
-     */
-    public Node(Rectangle rectangle) {
-        this.rectangle = rectangle;
-        left = right = null;
-    }
-
+    private Node<T> left;
+    private Node<T> right;
+    private T value;
 
     /**
-     * getter function
-     * 
-     * @return rectangle
-     *         the rectangle in the node
+     * Instantiates a new node.
+     *
+     * @param value
+     *            the value
      */
-    public Rectangle getRectangle() {
-        return rectangle;
+    public Node(T value) {
+        this.value = value;
+        left = null;
+        right = null;
+    }
+    
+
+    public Node<T> getLeft() {
+        return left;
     }
 
-
-    /**
-     * setter function
-     * 
-     * @param rectangle
-     *            set the rectangle
-     */
-    public void setRectangle(Rectangle rectangle) {
-        this.rectangle = rectangle;
+    public void setLeft(Node<T> left) {
+        this.left = left;
     }
 
+    public Node<T> getRight() {
+        return right;
+    }
+
+    public void setRight(Node<T> right) {
+        this.right = right;
+    }
+
+    public T getValue() {
+        return value;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+    
+    public boolean equals(Node<T> node) {
+       return value.equals(node.getValue()); 
+    }
+    
+    
 }

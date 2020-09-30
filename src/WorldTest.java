@@ -1,14 +1,16 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import student.TestCase;
 
+// -------------------------------------------------------------------------
 /**
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * Test the BST function (you should throw this away for your project)
+ *
+ * @author CS3114 staff
+ * @version August, 2018
  */
-public class RectangleDBTest extends TestCase {
-
+public class WorldTest extends student.TestCase {
+    
     /**
      * get the output string of input file
      * 
@@ -24,28 +26,28 @@ public class RectangleDBTest extends TestCase {
         return new String(encoded);
     }
 
-
     /**
-     * Sets up the tests that follow. In general, used for initialization
+     * setUp the condition.
      */
     public void setUp() {
-        // Nothing Here
+        // Nothing to setup here. May not be true for your tests
     }
 
 
     /**
-     * Get code coverage of the class declaration.
+     * Test basic.
+     * @throws Exception 
      */
-    public void testRInit() throws Exception {
+    public void testBasic() throws Exception {
         RectangleDB manager = new RectangleDB();
         assertNotNull(manager);
         String curPath = System.getProperty("user.dir");
-        String filePath1 = curPath + "/src/complexcase.txt";
+        String filePath1 = curPath + "/src/intersection.txt";
         String[] args1 = new String[1];
         args1[0] = filePath1;
         RectangleDB.main(args1);
-        assertFuzzyEquals(readFile(curPath + "/src/complexout.txt"), systemOut()
-            .getHistory());
-
+        assertFuzzyEquals(readFile(curPath + "/src/intersectionout.txt"), systemOut()
+            .getHistory());      
     }
+
 }

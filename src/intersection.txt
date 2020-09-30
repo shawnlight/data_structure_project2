@@ -1,0 +1,15 @@
+dump 
+insert a 2 4 127 6
+insert b 2 4 127 6
+
+
+insert c 2 4 127 6
+dump
+intersections
+
+
+
+
+
+
+

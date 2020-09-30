@@ -1,0 +1,15 @@
+BST dump:
+Node has depth 0, Value (null)
+BST size is: 0
+Rectangle accepted:(a, 2, 4, 127, 6)
+Rectangle accepted:(b, 2, 4, 127, 6)
+Rectangle accepted:(c, 2, 4, 127, 6)
+BST dump:
+Node has depth 0, Value (a, 2, 4, 127, 6)
+Node has depth 1, Value (b, 2, 4, 127, 6)
+Node has depth 2, Value (c, 2, 4, 127, 6)
+BST size is: 3
+Intersection pairs:
+(a, 2, 4, 127, 6) : (b, 2, 4, 127, 6)
+(a, 2, 4, 127, 6) : (c, 2, 4, 127, 6)
+(b, 2, 4, 127, 6) : (c, 2, 4, 127, 6)

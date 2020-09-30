@@ -6,7 +6,7 @@
  * @version {2020 fall}
  *
  */
-public class Rectangle {
+public class Rectangle implements Comparable<Rectangle> {
     private String name;
     private int Xpos;
     private int Ypos;
@@ -33,6 +33,19 @@ public class Rectangle {
         Ypos = ypos;
         this.width = width;
         this.height = height;
+    }
+
+
+    public Rectangle(String name) {
+        this.name = name;
+    }
+
+
+    public Rectangle(int x, int y, int w, int h) {
+        Xpos = x;
+        Ypos = y;
+        this.width = w;
+        this.height = h;
     }
 
 
@@ -110,7 +123,8 @@ public class Rectangle {
      */
     public boolean notValid() {
         return height <= 0 || width <= 0 || Xpos < 0 || Ypos < 0 || Xpos > 1023
-            || Ypos > 1023 || Xpos + width > 1024 || Ypos + height > 1024;
+            || Ypos > 1023 || Xpos + width > 1024 || Ypos + height > 1024
+            || !Character.isLetter(name.charAt(0));
     }
 
 
@@ -147,18 +161,30 @@ public class Rectangle {
     }
 
 
-    /**
-     * check if two rectangle are the same
-     * 
-     * @param rec
-     *            rectangle to be compared with
-     * @return true
-     *         if they are same rectangle
-     */
-    public boolean sameRec(Rectangle rec) {
-        return name.equals(rec.getName()) && Xpos == rec.getXpos()
-            && Ypos == rec.getYpos() && width == rec.getWidth() && height == rec
-                .getHeight();
+    public boolean sameDim(Rectangle rec) {
+        return rec.getXpos() == Xpos && rec.getYpos() == Ypos && rec
+            .getWidth() == width && rec.getHeight() == height;
+    }
+
+
+    public void printRectangle() {
+        System.out.println("(" + name + ", " + Xpos + ", " + Ypos + ", " + width
+            + ", " + height + ")");
+    }
+
+
+    public boolean equals(Rectangle rec) {
+        return rec.getName().equals(name) && rec.getXpos() == Xpos && rec
+            .getYpos() == Ypos && rec.getWidth() == width && rec
+                .getHeight() == height;
+    }
+
+
+    @Override
+    public int compareTo(Rectangle o) {
+        // TODO Auto-generated method stub
+        return name.compareTo(o.getName());
+
     }
 
 }

@@ -1,0 +1,79 @@
+BST dump:
+Node has depth 0, Value (null)
+BST size is: 0
+Rectangle accepted:(a, 1, 0, 2, 4)
+Rectangle accepted:(b, 4, 3, 6, 1)
+Rectangle accepted:(c, 2, 4, 123, 6)
+BST dump:
+Node has depth 0, Value (a, 1, 0, 2, 4)
+Node has depth 1, Value (b, 4, 3, 6, 1)
+Node has depth 2, Value (c, 2, 4, 123, 6)
+BST size is: 3
+Rectangle rejected:(c, 2, 4, 123, 6)
+BST dump:
+Node has depth 0, Value (a, 1, 0, 2, 4)
+Node has depth 1, Value (b, 4, 3, 6, 1)
+Node has depth 2, Value (c, 2, 4, 123, 6)
+BST size is: 3
+Rectangle accepted:(a, 2, 4, 123, 6)
+BST dump:
+Node has depth 1, Value (a, 2, 4, 123, 6)
+Node has depth 0, Value (a, 1, 0, 2, 4)
+Node has depth 1, Value (b, 4, 3, 6, 1)
+Node has depth 2, Value (c, 2, 4, 123, 6)
+BST size is: 4
+BST dump:
+Node has depth 0, Value (a, 2, 4, 123, 6)
+Node has depth 1, Value (b, 4, 3, 6, 1)
+Node has depth 2, Value (c, 2, 4, 123, 6)
+BST size is: 3
+Rectangle rejected light
+BST dump:
+Node has depth 0, Value (null)
+BST size is: 0
+Rectangle rejected c
+Rectangle accepted:(a, 1, 0, 2, 4)
+Rectangle accepted:(b, 4, 3, 6, 1)
+Rectangle accepted:(c, 2, 4, 123, 6)
+Rectangle accepted:(a, 2, 4, 123, 6)
+BST dump:
+Node has depth 1, Value (a, 2, 4, 123, 6)
+Node has depth 0, Value (a, 1, 0, 2, 4)
+Node has depth 1, Value (b, 4, 3, 6, 1)
+Node has depth 2, Value (c, 2, 4, 123, 6)
+BST size is: 4
+Rectangle found: (a, 1, 0, 2, 4)
+Rectangle found: (a, 2, 4, 123, 6)
+Rectangle found: (b, 4, 3, 6, 1)
+Rectangle not found: d
+Rectangle rejected:(a, 1, 0, 2, 4)
+Rectangle rejected:(b, 4, 3, 6, 1)
+Rectangle rejected:(c, 2, 4, 123, 6)
+Rectangle rejected:(a, 2, 4, 123, 6)
+BST dump:
+Node has depth 1, Value (a, 2, 4, 123, 6)
+Node has depth 0, Value (a, 1, 0, 2, 4)
+Node has depth 1, Value (b, 4, 3, 6, 1)
+Node has depth 2, Value (c, 2, 4, 123, 6)
+BST size is: 4
+Rectangle rejected: (2, 4, 123, 7)
+BST dump:
+Node has depth 0, Value (a, 1, 0, 2, 4)
+Node has depth 1, Value (b, 4, 3, 6, 1)
+Node has depth 2, Value (c, 2, 4, 123, 6)
+BST size is: 3
+BST dump:
+Node has depth 0, Value (a, 1, 0, 2, 4)
+Node has depth 1, Value (b, 4, 3, 6, 1)
+BST size is: 2
+Rectangle rejected: (1, 0, 2, 3)
+BST dump:
+Node has depth 0, Value (b, 4, 3, 6, 1)
+BST size is: 1
+BST dump:
+Node has depth 0, Value (null)
+BST size is: 0
+Rectangle rejected: (4, 3, 6, 1)
+BST dump:
+Node has depth 0, Value (null)
+BST size is: 0

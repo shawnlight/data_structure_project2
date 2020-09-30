@@ -1,5 +1,5 @@
 import java.io.File;
-import java.io.IOException;
+
 /**
  * {Project Description Here}
  */
@@ -7,9 +7,8 @@ import java.io.IOException;
 /**
  * The class containing the main method.
  *
- * @author {Ziqi Xiao Weiming Chen}
- * @version {2020 fall}
- * 
+ * @author {Your Name Here}
+ * @version {Put Something Here}
  */
 
 // On my honor:
@@ -36,18 +35,9 @@ public class RectangleDB {
     /**
      * @param args
      *            Command line parameters
-     *            [0] The name of the command file passed in as a command
-     *            line argument.
-     * @throws IOException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         // This is the main file for the program.
-        if (args.length != 1) {
-            System.out.println("Bad Argument Count. Usage: MemMan "
-                + "<init-memory-size> <init-hash-size> <command-file>");
-            return;
-        }
-
         String commandFile = args[0].trim();
         File theFile = new File(commandFile);
         if (!theFile.exists()) {
@@ -55,16 +45,10 @@ public class RectangleDB {
                 + "|");
             return;
         }
-        
+
         World world = new World();
         Parser parser = new Parser(world);
         parser.readCmdFile(theFile);
-        
-        
-        
-        
-
 
     }
-
 }

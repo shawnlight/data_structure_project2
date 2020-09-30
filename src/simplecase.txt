@@ -1,0 +1,72 @@
+dump
+
+insert a 1 0 2 4
+insert b 4 3 6 1
+
+insert c 2 4 123     6
+dump
+
+insert c 2 4 123 6
+dump
+
+insert a 2 4 123 6  
+dump
+
+remove a
+
+dump
+
+remove light
+remove a 
+remove b 
+remove c
+
+dump
+
+remove c
+
+insert a 1 0 2 4
+insert b 4 3 6 1
+
+insert c 2 4 123     6
+
+insert a 2 4 123 6  
+
+dump
+
+search a
+
+search b
+search d
+
+insert a 1 0 2 4
+insert b 4 3 6 1
+
+insert c 2 4 123     6
+
+insert a 2 4 123 6  
+dump
+
+remove 2 4 123 7
+remove 2 4 123 6
+dump
+remove 2 4 123 6
+dump
+
+remove 1 0 2 3
+remove 1 0 2 4
+
+dump
+remove 4 3 6 1
+
+dump
+
+remove 4 3 6 1
+
+dump
+
+
+
+
+
+

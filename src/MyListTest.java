@@ -13,7 +13,7 @@ public class MyListTest extends TestCase {
      * with add, remove, get .etc method
      */
     public void testInsert() {
-        MyList<Integer> list = new MyList<Integer>(Integer.class, 10);
+        MyList<Integer> list = new MyList<Integer>();
         list.add(1);
         list.add(2);
         assertEquals((int)list.getSize(), 2);
@@ -35,7 +35,7 @@ public class MyListTest extends TestCase {
         assertEquals((int)list.getSize(), 11);
         assertEquals((int)list.remove((int)list.getSize() - 1), 12);
         @SuppressWarnings("rawtypes")
-        MyList<MyList> listArray = new MyList<MyList>(MyList.class, 10);
+        MyList<MyList> listArray = new MyList<MyList>();
         listArray.add(list);
         @SuppressWarnings("rawtypes")
         MyList ele = listArray.get(0);

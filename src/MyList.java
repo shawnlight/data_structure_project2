@@ -6,16 +6,17 @@ import java.lang.reflect.Array;
  * 
  * @author light
  * @version {2020 fall}
- * @param <E>
+ * @param <T>
  *            type
  *            type of the list we create
  *
  */
-public class MyList<E> {
-    private E[] myArray;
-    private int maxSize;
+public class MyList<T> {
+    private T t;
+    private int maxSize = 10;
     private int listSize;
-    private Class<E> newObject;
+    private Object obj[];
+//    private Class<T> newObject;
 
     /**
      * constructor initialize the list
@@ -27,11 +28,10 @@ public class MyList<E> {
      *            the maximum size of the list
      */
     @SuppressWarnings("unchecked")
-    public MyList(Class<E> newObject, int size) {
+    public MyList() {
         listSize = 0;
-        maxSize = size;
-        this.newObject = newObject;
-        this.myArray = (E[])Array.newInstance(newObject, maxSize);
+//        this.newObject = newObject;
+        obj=new Object[maxSize];
 
     }
 
@@ -50,11 +50,12 @@ public class MyList<E> {
      * @param element
      *            the element we add
      */
-    public void add(E element) {
+    public void add(T element) {
         if (isFull()) {
             expand();
         }
-        myArray[listSize++] = element;
+        t = element;
+        obj[listSize++] = t;
     }
 
 
@@ -65,20 +66,21 @@ public class MyList<E> {
      *            the location of element we need to remove
      * @return removed element
      */
-    public E remove(int index) {
+    public T remove(int index) {
         @SuppressWarnings("unchecked")
-        E[] newArray = (E[])Array.newInstance(newObject, maxSize);
-        E removed = myArray[index];
-        myArray[index] = null;
+//        T[] newArray = (T[]) myArray[maxSize];
+        Object[] newArray = new Object[maxSize];
+        T removed = (T)obj[index];
+        obj[index] = null;
         int pos = 0;
         for (int i = 0; i < listSize; i++) {
-            if (myArray[i] != null) {
-                newArray[pos++] = myArray[i];
+            if (obj[i] != null) {
+                newArray[pos++] = obj[i];
             }
 
         }
         listSize--;
-        this.myArray = newArray;
+        this.obj = newArray;
         return removed;
 
     }
@@ -105,11 +107,11 @@ public class MyList<E> {
     public void expand() {
         maxSize = 2 * maxSize;
         @SuppressWarnings("unchecked")
-        E[] expandArray = (E[])Array.newInstance(newObject, maxSize);
+        Object[] expandArray = new Object[maxSize];
         for (int i = 0; i < maxSize / 2; i++) {
-            expandArray[i] = myArray[i];
+            expandArray[i] = obj[i];
         }
-        myArray = expandArray;
+        obj = expandArray;
     }
 
 
@@ -120,8 +122,8 @@ public class MyList<E> {
      *            the target element location
      * @return element object
      */
-    public E get(int index) {
-        return myArray[index];
+    public T get(int index) {
+        return (T)obj[index];
     }
 
 
@@ -133,8 +135,8 @@ public class MyList<E> {
      * @param index
      *            target position
      */
-    public void set(E element, int index) {
-        myArray[index] = element;
+    public void set(T element, int index) {
+        obj[index] = element;
     }
 
 
