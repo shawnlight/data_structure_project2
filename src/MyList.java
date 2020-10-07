@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-
 /**
  * array list class for
  * supporting the memory management
@@ -12,26 +10,20 @@ import java.lang.reflect.Array;
  *
  */
 public class MyList<T> {
-    private T t;
     private int maxSize = 10;
     private int listSize;
-    private Object obj[];
-//    private Class<T> newObject;
+    private Object[] obj;
+// private Class<T> newObject;
 
     /**
      * constructor initialize the list
      * with specific size
      * 
-     * @param newObject
-     *            the type of the list we create
-     * @param size
-     *            the maximum size of the list
      */
-    @SuppressWarnings("unchecked")
     public MyList() {
         listSize = 0;
-//        this.newObject = newObject;
-        obj=new Object[maxSize];
+// this.newObject = newObject;
+        obj = new Object[maxSize];
 
     }
 
@@ -54,8 +46,7 @@ public class MyList<T> {
         if (isFull()) {
             expand();
         }
-        t = element;
-        obj[listSize++] = t;
+        obj[listSize++] = element;
     }
 
 
@@ -66,9 +57,9 @@ public class MyList<T> {
      *            the location of element we need to remove
      * @return removed element
      */
+    @SuppressWarnings("unchecked")
     public T remove(int index) {
-        @SuppressWarnings("unchecked")
-//        T[] newArray = (T[]) myArray[maxSize];
+// T[] newArray = (T[]) myArray[maxSize];
         Object[] newArray = new Object[maxSize];
         T removed = (T)obj[index];
         obj[index] = null;
@@ -106,7 +97,6 @@ public class MyList<T> {
      */
     public void expand() {
         maxSize = 2 * maxSize;
-        @SuppressWarnings("unchecked")
         Object[] expandArray = new Object[maxSize];
         for (int i = 0; i < maxSize / 2; i++) {
             expandArray[i] = obj[i];
@@ -122,6 +112,7 @@ public class MyList<T> {
      *            the target element location
      * @return element object
      */
+    @SuppressWarnings("unchecked")
     public T get(int index) {
         return (T)obj[index];
     }

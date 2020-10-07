@@ -1,62 +1,7 @@
-dump 
-insert g 2 4 127 6
-insert d 2 4 124 6
-insert a 1 0 2 4
-insert a 1 1 2 4
-insert a 1 2 2 4
-insert e 2 4 125 6
-insert e 1 4 125 6
-insert f 2 4 126 6
-insert b 4 3 6 1
-insert c 2 4 123 6
-insert x 2 4 129 6
-insert h 2 4 128 6
-insert x 2 4 123 7
-insert x 2 4 123 8
-insert y 2 4 123 9
-
-
-
-dump
-
-
-search A
-search a
-search b
-search x
-search x
-search y
-
-remove light
-remove a
-dump
-remove d
-dump
-remove 1 2 2 3
-remove 1 2 2 4
-dump
-remove 2 4 125 6
-dump
-
-remove 2 4 129 6
-dump
-remove x
-dump
-remove g 
-dump
-remove a 
-remove a
-remove 1 1 2 4
-remove b 
-remove c 
-remove e 
-remove f
-remove h
-remove x
-remove y
-dump
-remove a
-remove 1 2 3 4
+insert a 1 1 1 1 
+insert c 1 1 1 1 
+insert b 1 1 1 1 
+insert d 1 1 1 1 
 dump
 
 

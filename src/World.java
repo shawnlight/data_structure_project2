@@ -66,7 +66,7 @@ public class World {
             return;
         }
 
-        bst.remove(rec,null);
+        bst.remove(rec, null);
 
     }
 
@@ -92,19 +92,34 @@ public class World {
             return;
         }
         Node<Rectangle> ref = new Node<Rectangle>(list.get(0));
-        bst.remove(list.get(0),ref);
-
-        
+        bst.remove(list.get(0), ref);
 
     }
 
 
+    /**
+     * remove help function
+     * 
+     * @param root
+     *            BST root
+     * @param x
+     *            x position
+     * @param y
+     *            y position
+     * @param w
+     *            width
+     * @param h
+     *            height
+     * @param list
+     *            list to collect the remove element
+     */
     private void removeByDimHelp(
         Node<Rectangle> root,
         int x,
         int y,
         int w,
-        int h, MyList<Rectangle> list) {
+        int h,
+        MyList<Rectangle> list) {
         if (root == null) {
             return;
         }
@@ -112,8 +127,8 @@ public class World {
         if (root.getValue().sameDim(rec)) {
             list.add(root.getValue());
         }
-        removeByDimHelp(root.getLeft(), x, y, w, h,list);
-        removeByDimHelp(root.getRight(), x, y, w, h,list);
+        removeByDimHelp(root.getLeft(), x, y, w, h, list);
+        removeByDimHelp(root.getRight(), x, y, w, h, list);
 
     }
 
@@ -148,6 +163,22 @@ public class World {
     }
 
 
+    /**
+     * region search help function
+     * 
+     * @param root
+     *            BST root
+     * @param x
+     *            x position
+     * @param y
+     *            y position
+     * @param w
+     *            width
+     * @param h
+     *            height
+     * @param list
+     *            list to collect the remove element
+     */
     private void regionsearchHelp(
         Node<Rectangle> root,
         int x,
@@ -194,7 +225,6 @@ public class World {
             j++;
 
         }
-        
 
         System.out.println("Intersection pairs:");
         for (int k = 0; k < finaPairList.getSize(); ++k) {
@@ -203,11 +233,21 @@ public class World {
     }
 
 
+    /**
+     * intersection help function
+     * 
+     * @param root
+     *            BST root
+     * @param rec
+     *            rectangle to compare with
+     * @param list
+     *            list to collect the pair
+     */
     public void intersectionHelp(
         Node<Rectangle> root,
         Rectangle rec,
         MyList<Pair> list) {
-        if(root == null) {
+        if (root == null) {
             return;
         }
         int xpos = rec.getXpos();
@@ -225,6 +265,14 @@ public class World {
     }
 
 
+    /**
+     * traverse the tree and add int the list
+     * 
+     * @param root
+     *            BST root
+     * @param list
+     *            list the add all elements
+     */
     private void traverseAdd(Node<Rectangle> root, MyList<Rectangle> list) {
         if (root == null) {
             return;
@@ -262,25 +310,33 @@ public class World {
      */
     public void dump() {
         System.out.println("BST dump:");
-        if (bst.getSize()== 0) {
+        if (bst.getSize() == 0) {
             System.out.println("Node has depth 0, Value (null)");
         }
         else {
             dumpHelp(bst.getRoot(), 0);
         }
         System.out.println("BST size is: " + bst.getSize());
-        
+
     }
 
 
+    /**
+     * traverse the tree in in-order sequence
+     * 
+     * @param root
+     *            BST root
+     * @param depth
+     *            depth of the node
+     */
     private void dumpHelp(Node<Rectangle> root, int depth) {
         if (root == null) {
             return;
         }
 
         dumpHelp(root.getLeft(), depth + 1);
-        System.out.print("Node has depth "+ depth+", Value ");
-        root.getValue().printRectangle();       
+        System.out.print("Node has depth " + depth + ", Value ");
+        root.getValue().printRectangle();
         dumpHelp(root.getRight(), depth + 1);
     }
 

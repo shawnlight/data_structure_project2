@@ -1,7 +1,8 @@
 /**
  * Stub for Node class
  * 
- * @author CS Staff
+ * @author light
+ * @version {2020 fall}
  * @param <T>
  *            the generic type; extends Comparable
  */
@@ -23,35 +24,85 @@ public class Node<T extends Comparable<T>> {
         left = null;
         right = null;
     }
-    
 
+
+    /**
+     * left child getter
+     * 
+     * @return Node<T>
+     *         left node
+     */
     public Node<T> getLeft() {
         return left;
     }
 
-    public void setLeft(Node<T> left) {
-        this.left = left;
+
+    /**
+     * left child setter
+     * 
+     * @param leftnode
+     *            set the left child
+     */
+    public void setLeft(Node<T> leftnode) {
+        this.left = leftnode;
     }
 
+
+    /**
+     * right child getter
+     * 
+     * @return Node<T>
+     *         right node
+     */
     public Node<T> getRight() {
         return right;
     }
 
-    public void setRight(Node<T> right) {
-        this.right = right;
+
+    /**
+     * right child setter
+     * 
+     * @param rightnode
+     *            set the right child
+     */
+    public void setRight(Node<T> rightnode) {
+        this.right = rightnode;
     }
 
+
+    /**
+     * node value getter
+     * 
+     * @return T
+     *         get the node value
+     */
     public T getValue() {
         return value;
     }
 
-    public void setValue(T value) {
-        this.value = value;
+
+    /**
+     * node value setter
+     * 
+     * @param parameter
+     *            set the node value
+     */
+    public void setValue(T parameter) {
+        this.value = parameter;
     }
-    
-    public boolean equals(Node<T> node) {
-       return value.equals(node.getValue()); 
+
+
+    /**
+     * check if two node are equal
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Node)) {
+            return false;
+        }
+        Node<T> node = (Node<T>)o;
+        return node.value.equals(this.value);
     }
-    
-    
+
 }

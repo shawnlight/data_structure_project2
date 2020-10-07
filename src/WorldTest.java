@@ -4,13 +4,13 @@ import java.nio.file.Paths;
 
 // -------------------------------------------------------------------------
 /**
- * Test the BST function (you should throw this away for your project)
+ * Test the world class
  *
- * @author CS3114 staff
- * @version August, 2018
+ * @author Ziqi Xiao
+ * @version 2020 fall
  */
 public class WorldTest extends student.TestCase {
-    
+
     /**
      * get the output string of input file
      * 
@@ -26,6 +26,7 @@ public class WorldTest extends student.TestCase {
         return new String(encoded);
     }
 
+
     /**
      * setUp the condition.
      */
@@ -36,7 +37,8 @@ public class WorldTest extends student.TestCase {
 
     /**
      * Test basic.
-     * @throws Exception 
+     * 
+     * @throws Exception
      */
     public void testBasic() throws Exception {
         RectangleDB manager = new RectangleDB();
@@ -46,8 +48,8 @@ public class WorldTest extends student.TestCase {
         String[] args1 = new String[1];
         args1[0] = filePath1;
         RectangleDB.main(args1);
-        assertFuzzyEquals(readFile(curPath + "/src/intersectionout.txt"), systemOut()
-            .getHistory());      
+        assertFuzzyEquals(readFile(curPath + "/src/intersectionout.txt"),
+            systemOut().getHistory());
     }
 
 }

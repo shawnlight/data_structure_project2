@@ -8,42 +8,60 @@
  */
 public class Rectangle implements Comparable<Rectangle> {
     private String name;
-    private int Xpos;
-    private int Ypos;
+    private int xpos;
+    private int ypos;
     private int width;
     private int height;
 
     /**
-     * constructor
+     * constructor with name and dimension
      * 
-     * @param name
+     * @param n
      *            rectangle name
-     * @param xpos
+     * @param x
      *            rectangle x position
-     * @param ypos
+     * @param y
      *            rectangle y position
-     * @param width
+     * @param w
      *            rectangle width
-     * @param height
+     * @param h
      *            rectangle height
      */
-    public Rectangle(String name, int xpos, int ypos, int width, int height) {
-        this.name = name;
-        Xpos = xpos;
-        Ypos = ypos;
-        this.width = width;
-        this.height = height;
+    public Rectangle(String n, int x, int y, int w, int h) {
+        this.name = n;
+        xpos = x;
+        ypos = y;
+        this.width = w;
+        this.height = h;
     }
 
 
+    /**
+     * constructor with name
+     * 
+     * @param name
+     *            rectangle name
+     */
     public Rectangle(String name) {
         this.name = name;
     }
 
 
+    /**
+     * constructor for dimension
+     * 
+     * @param x
+     *            x position
+     * @param y
+     *            y position
+     * @param w
+     *            width
+     * @param h
+     *            height
+     */
     public Rectangle(int x, int y, int w, int h) {
-        Xpos = x;
-        Ypos = y;
+        xpos = x;
+        ypos = y;
         this.width = w;
         this.height = h;
     }
@@ -67,7 +85,7 @@ public class Rectangle implements Comparable<Rectangle> {
      *         x position of rectangle
      */
     public int getXpos() {
-        return Xpos;
+        return xpos;
     }
 
 
@@ -78,7 +96,7 @@ public class Rectangle implements Comparable<Rectangle> {
      *         y position of rectangle
      */
     public int getYpos() {
-        return Ypos;
+        return ypos;
     }
 
 
@@ -122,8 +140,8 @@ public class Rectangle implements Comparable<Rectangle> {
      *         if the rectangle is valid
      */
     public boolean notValid() {
-        return height <= 0 || width <= 0 || Xpos < 0 || Ypos < 0 || Xpos > 1023
-            || Ypos > 1023 || Xpos + width > 1024 || Ypos + height > 1024
+        return height <= 0 || width <= 0 || xpos < 0 || ypos < 0 || xpos > 1023
+            || ypos > 1023 || xpos + width > 1024 || ypos + height > 1024
             || !Character.isLetter(name.charAt(0));
     }
 
@@ -143,13 +161,13 @@ public class Rectangle implements Comparable<Rectangle> {
      *         if the rectangle intersect with given dimension
      */
     public boolean intersect(int x, int y, int w, int h) {
-        int xmin = Math.max(Xpos, x);
-        int xmax1 = Xpos + width;
+        int xmin = Math.max(xpos, x);
+        int xmax1 = xpos + width;
         int xmax2 = x + w;
         int xmax = Math.min(xmax1, xmax2);
         if (xmax > xmin) {
-            int ymin = Math.max(Ypos, y);
-            int ymax1 = Ypos + height;
+            int ymin = Math.max(ypos, y);
+            int ymax1 = ypos + height;
             int ymax2 = y + h;
             int ymax = Math.min(ymax1, ymax2);
             if (ymax > ymin) {
@@ -161,28 +179,52 @@ public class Rectangle implements Comparable<Rectangle> {
     }
 
 
+    /**
+     * check two rectangle have the same dimension
+     * 
+     * @param rec
+     *            rectangle to compare with
+     * @return true
+     *         if two rectangle have same dimension
+     * 
+     */
     public boolean sameDim(Rectangle rec) {
-        return rec.getXpos() == Xpos && rec.getYpos() == Ypos && rec
+        return rec.getXpos() == xpos && rec.getYpos() == ypos && rec
             .getWidth() == width && rec.getHeight() == height;
     }
 
 
+    /**
+     * print the rectangle with name and dimension
+     * 
+     */
     public void printRectangle() {
-        System.out.println("(" + name + ", " + Xpos + ", " + Ypos + ", " + width
+        System.out.println("(" + name + ", " + xpos + ", " + ypos + ", " + width
             + ", " + height + ")");
     }
 
 
-    public boolean equals(Rectangle rec) {
-        return rec.getName().equals(name) && rec.getXpos() == Xpos && rec
-            .getYpos() == Ypos && rec.getWidth() == width && rec
+    /**
+     * check if two rectangle are equal
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Rectangle)) {
+            return false;
+        }
+        Rectangle rec = (Rectangle)o;
+        return rec.getName().equals(name) && rec.getXpos() == xpos && rec
+            .getYpos() == ypos && rec.getWidth() == width && rec
                 .getHeight() == height;
     }
 
 
+    /**
+     * compare method to for rectangle
+     *
+     */
     @Override
     public int compareTo(Rectangle o) {
-        // TODO Auto-generated method stub
         return name.compareTo(o.getName());
 
     }

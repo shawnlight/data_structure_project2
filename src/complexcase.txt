@@ -1,4 +1,6 @@
 dump 
+insert _a 1 1 2 3
+insert 1 1 1 2 3 
 insert g 2 4 127 6
 insert d 2 4 124 6
 insert a 1 0 2 4
@@ -15,7 +17,7 @@ insert x 2 4 123 7
 insert x 2 4 123 8
 insert y 2 4 123 9
 
-
+regionsearch 1 2 2 3
 
 dump
 
@@ -58,4 +60,3 @@ dump
 remove a
 remove 1 2 3 4
 dump
-

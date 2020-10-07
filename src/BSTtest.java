@@ -1,5 +1,4 @@
 import student.TestCase;
-
 // -------------------------------------------------------------------------
 /**
  * Test the BST function (you should throw this away for your project)
@@ -7,7 +6,7 @@ import student.TestCase;
  * @author CS3114 staff
  * @version August, 2018
  */
-public class BSTTest extends student.TestCase {
+public class BSTTest extends TestCase {
 
     /**
      * setUp the condition.
@@ -29,25 +28,18 @@ public class BSTTest extends student.TestCase {
         bst1.insert(4);
         bst1.insert(1);
         MyList<Integer> list1 = bst1.search(1);
-        assertEquals(list1.getSize(),2);
-        assertEquals(bst1.getSize(),5);
-        bst1.remove(2,null);
-        assertEquals(bst1.getSize(),4);
-        bst1.remove(999,null);
-        assertEquals(bst1.getSize(),4);
-        bst1.remove(1,null);
-        bst1.remove(1,null);
-        bst1.remove(3,null);
-        bst1.remove(4,null);
-        assertEquals(bst1.getSize(),0);
-        
-        
-        
-        
-        
-        
-        
-        
+        assertEquals(list1.getSize(), 2);
+        assertEquals(bst1.getSize(), 5);
+        bst1.remove(2, null);
+        assertEquals(bst1.getSize(), 4);
+        bst1.remove(999, null);
+        assertEquals(bst1.getSize(), 4);
+        bst1.remove(1, null);
+        bst1.remove(1, null);
+        bst1.remove(3, null);
+        bst1.remove(4, null);
+        assertEquals(bst1.getSize(), 0);
+
     }
 
 }

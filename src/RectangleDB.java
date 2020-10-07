@@ -7,8 +7,8 @@ import java.io.File;
 /**
  * The class containing the main method.
  *
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * @author {Ziqi Xiao}
+ * @version {2020 fall}
  */
 
 // On my honor:
@@ -40,12 +40,6 @@ public class RectangleDB {
         // This is the main file for the program.
         String commandFile = args[0].trim();
         File theFile = new File(commandFile);
-        if (!theFile.exists()) {
-            System.out.println("There is no such input file as |" + commandFile
-                + "|");
-            return;
-        }
-
         World world = new World();
         Parser parser = new Parser(world);
         parser.readCmdFile(theFile);

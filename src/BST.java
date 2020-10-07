@@ -1,7 +1,8 @@
 /**
  * Stub for binary search tree class
  * 
- * @author {Your Name Here}
+ * @author light
+ * @version {2020 fall}
  * @param <T>
  *            the generic type; extends Comparable
  */
@@ -23,38 +24,77 @@ public class BST<T extends Comparable<T>> {
     }
 
 
+    /**
+     * BST root getter
+     * 
+     * @return Node<T>
+     *         return the root of BST
+     */
     public Node<T> getRoot() {
         return root;
     }
 
 
+    /**
+     * BST size getter
+     * 
+     * @return size
+     * 
+     *         return the size of BST
+     * 
+     */
     public int getSize() {
         return size;
     }
 
 
+    /**
+     * BST insert function
+     * 
+     * @param e
+     *            insert comparable
+     */
     public void insert(Comparable<T> e) {
         root = insertHelp(root, e);
         size++;
     }
 
 
-    private Node<T> insertHelp(Node<T> root, Comparable<T> e) {
-        if (root == null) {
-            return new Node((T)e);
+    /**
+     * help function for BST insertion
+     * 
+     * @param rt
+     *            current root of BST
+     * @param e
+     *            insert help comparable
+     * @return Node<T>
+     *         recursive node for help function
+     */
+    @SuppressWarnings("unchecked")
+    private Node<T> insertHelp(Node<T> rt, Comparable<T> e) {
+        if (rt == null) {
+            return new Node<T>((T)e);
         }
 
-        else if (root.getValue().compareTo((T)e) >= 0) {
-            root.setLeft(insertHelp(root.getLeft(), e));
+        else if (rt.getValue().compareTo((T)e) >= 0) {
+            rt.setLeft(insertHelp(rt.getLeft(), e));
         }
         else {
-            root.setRight(insertHelp(root.getRight(), e));
+            rt.setRight(insertHelp(rt.getRight(), e));
         }
-        return root;
+        return rt;
 
     }
 
 
+    /**
+     * BST search function
+     * 
+     * @param e
+     *            search comparable
+     * @return
+     *         search list
+     */
     public MyList<T> search(Comparable<T> e) {
         MyList<T> list = new MyList<T>();
         searchHelp(root, e, list);
@@ -62,26 +102,45 @@ public class BST<T extends Comparable<T>> {
     }
 
 
-    private void searchHelp(Node<T> root, Comparable<T> e, MyList<T> list) {
-        if (root == null) {
+    /**
+     * BST search help function
+     * 
+     * @param rt
+     *            current BST root
+     * @param e
+     *            comparable
+     * @param list
+     *            list to store the search element
+     */
+    @SuppressWarnings("unchecked")
+    private void searchHelp(Node<T> rt, Comparable<T> e, MyList<T> list) {
+        if (rt == null) {
             return;
         }
 
-        if (root.getValue().compareTo((T)e) > 0) {
-            searchHelp(root.getLeft(), e, list);
+        if (rt.getValue().compareTo((T)e) > 0) {
+            searchHelp(rt.getLeft(), e, list);
         }
-        else if (root.getValue().compareTo((T)e) < 0) {
-            searchHelp(root.getRight(), e, list);
+        else if (rt.getValue().compareTo((T)e) < 0) {
+            searchHelp(rt.getRight(), e, list);
         }
 
         else {
-            list.add(root.getValue());
-            searchHelp(root.getLeft(), e, list);
+            list.add(rt.getValue());
+            searchHelp(rt.getLeft(), e, list);
             return;
         }
     }
 
 
+    /**
+     * BST remove function
+     * 
+     * @param e
+     *            comparable
+     * @param ref
+     *            reference for dimension remove
+     */
     public void remove(Comparable<T> e, Node<T> ref) {
         if (search(e).getSize() == 0) {
             return;
@@ -91,72 +150,96 @@ public class BST<T extends Comparable<T>> {
     }
 
 
-    private Node<T> removeHelp(Node<T> root, Comparable<T> e, Node<T> ref) {
-        if (root == null) {
+    /**
+     * @param rt
+     *            BST root
+     * @param e
+     *            comparable
+     * @param ref
+     *            reference for dimension remove
+     * 
+     * @return Node<T>
+     *         recursive node
+     */
+    @SuppressWarnings("unchecked")
+    private Node<T> removeHelp(Node<T> rt, Comparable<T> e, Node<T> ref) {
+        if (rt == null) {
             return null;
         }
 
-        if (root.getValue().compareTo((T)e) > 0) {
-            root.setLeft(removeHelp(root.getLeft(), e, ref));
+        if (rt.getValue().compareTo((T)e) > 0) {
+            rt.setLeft(removeHelp(rt.getLeft(), e, ref));
         }
-        else if (root.getValue().compareTo((T)e) < 0) {
-            root.setRight(removeHelp(root.getRight(), e, ref));
+        else if (rt.getValue().compareTo((T)e) < 0) {
+            rt.setRight(removeHelp(rt.getRight(), e, ref));
         }
         else {
             if (ref == null) {
-                if (root.getLeft() == null) {
-                    return root.getRight();
+                if (rt.getLeft() == null) {
+                    return rt.getRight();
                 }
-                else if (root.getRight() == null) {
-                    return root.getLeft();
+                else if (rt.getRight() == null) {
+                    return rt.getLeft();
                 }
                 else {
-                    Node<T> temp = getMax(root.getLeft());
-                    root.setValue(temp.getValue());
-                    root.setLeft(deleteMax(root.getLeft()));
+                    Node<T> temp = getMax(rt.getLeft());
+                    rt.setValue(temp.getValue());
+                    rt.setLeft(deleteMax(rt.getLeft()));
 
                 }
             }
             else {
-                if(ref.equals(root)) {
-                    if (root.getLeft() == null) {
-                        return root.getRight();
+                if (ref.equals(rt)) {
+                    if (rt.getLeft() == null) {
+                        return rt.getRight();
                     }
-                    else if (root.getRight() == null) {
-                        return root.getLeft();
+                    else if (rt.getRight() == null) {
+                        return rt.getLeft();
                     }
                     else {
-                        Node<T> temp = getMax(root.getLeft());
-                        root.setValue(temp.getValue());
-                        root.setLeft(deleteMax(root.getLeft()));
+                        Node<T> temp = getMax(rt.getLeft());
+                        rt.setValue(temp.getValue());
+                        rt.setLeft(deleteMax(rt.getLeft()));
 
                     }
                 }
                 else {
-                    root.setLeft(removeHelp(root.getLeft(), e, ref));
+                    rt.setLeft(removeHelp(rt.getLeft(), e, ref));
                 }
             }
         }
-        return root;
+        return rt;
 
     }
 
 
-    private Node<T> getMax(Node<T> root) {
-        if (root.getRight() == null) {
-            return root;
+    /**
+     * @param rt
+     *            BST node
+     * @return Node<T>
+     *         max value Node in BST
+     */
+    private Node<T> getMax(Node<T> rt) {
+        if (rt.getRight() == null) {
+            return rt;
         }
 
-        return getMax(root.getRight());
+        return getMax(rt.getRight());
     }
 
 
-    private Node<T> deleteMax(Node<T> root) {
-        if (root.getRight() == null) {
-            return root.getLeft();
+    /**
+     * @param rt
+     *            BST node
+     * @return Node<T>
+     *         node with max value
+     */
+    private Node<T> deleteMax(Node<T> rt) {
+        if (rt.getRight() == null) {
+            return rt.getLeft();
         }
-        root.setRight(deleteMax(root.getRight()));
-        return root;
+        rt.setRight(deleteMax(rt.getRight()));
+        return rt;
     }
 
 }
