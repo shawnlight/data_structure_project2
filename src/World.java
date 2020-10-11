@@ -93,7 +93,6 @@ public class World {
         }
         Node<Rectangle> ref = new Node<Rectangle>(list.get(0));
         bst.remove(list.get(0), ref);
-
     }
 
 
@@ -157,7 +156,7 @@ public class World {
         System.out.println("Rectangles intersecting region (" + x + ", " + y
             + ", " + w + ", " + h + "):");
         for (int i = 0; i < list.getSize(); i++) {
-            list.get(i).printRectangle();
+            System.out.println(list.get(i).toString());
         }
 
     }
@@ -189,7 +188,8 @@ public class World {
         if (root == null) {
             return;
         }
-        if (root.getValue().intersect(x, y, w, h)) {
+        Rectangle rec = new Rectangle(x, y, w, h);
+        if (root.getValue().intersect(rec)) {
             list.add(root.getValue());
         }
         regionsearchHelp(root.getLeft(), x, y, w, h, list);
@@ -202,71 +202,54 @@ public class World {
      * print the intersection pairs
      */
     public void intersections() {
+
+        // dfs method
         MyList<Rectangle> recList = new MyList<Rectangle>();
         MyList<Pair> pairList = new MyList<Pair>();
         traverseAdd(bst.getRoot(), recList);
-        for (int i = 0; i < recList.getSize(); ++i) {
-            intersectionHelp(bst.getRoot(), recList.get(i), pairList);
-        }
-        MyList<Pair> finaPairList = new MyList<Pair>();
-
-        int j = 0;
-        while (j < pairList.getSize()) {
-            int i = j + 1;
-            Pair cur = pairList.get(j);
-            for (; i < pairList.getSize(); i++) {
-                if (cur.samePair(pairList.get(i))) {
-                    break;
-                }
-            }
-            if (i == pairList.getSize()) {
-                finaPairList.add(cur);
-            }
-            j++;
-
-        }
-
+        dfs(recList, pairList, 0);
         System.out.println("Intersection pairs:");
-        for (int k = 0; k < finaPairList.getSize(); ++k) {
-            finaPairList.get(k).printPair();
+        for (int k = 0; k < pairList.getSize(); ++k) {
+            pairList.get(k).printPair();
         }
     }
 
 
     /**
-     * intersection help function
+     * depth first search help function
      * 
-     * @param root
-     *            BST root
-     * @param rec
-     *            rectangle to compare with
-     * @param list
-     *            list to collect the pair
+     * @param recList
+     *            rectangle list
+     * @param pairList
+     *            rectangle pair list
+     * @param start
+     *            start index for search
      */
-    public void intersectionHelp(
-        Node<Rectangle> root,
-        Rectangle rec,
-        MyList<Pair> list) {
-        if (root == null) {
+    public void dfs(
+        MyList<Rectangle> recList,
+        MyList<Pair> pairList,
+        int start) {
+        int len = recList.getSize();
+        if (len == 0) {
             return;
         }
-        int xpos = rec.getXpos();
-        int ypos = rec.getYpos();
-        int width = rec.getWidth();
-        int height = rec.getHeight();
-        boolean intersect = root.getValue().intersect(xpos, ypos, width, height)
-            && !root.getValue().equals(rec);
-        if (intersect) {
-            Pair pair = new Pair(root.getValue(), rec);
-            list.add(pair);
+
+        if (start >= len) {
+            return;
         }
-        intersectionHelp(root.getLeft(), rec, list);
-        intersectionHelp(root.getRight(), rec, list);
+
+        for (int i = start + 1; i < len; i++) {
+            if (recList.get(start).intersect(recList.get(i))) {
+                pairList.add(new Pair(recList.get(start), recList.get(i)));
+            }
+
+        }
+        dfs(recList, pairList, start + 1);
     }
 
 
     /**
-     * traverse the tree and add int the list
+     * traverse the tree and add into the list
      * 
      * @param root
      *            BST root
@@ -290,7 +273,7 @@ public class World {
      *            target name
      */
     public void search(String name) {
-        // sudo rectangle for search
+        // sudo-rectangle for search
         Rectangle rec = new Rectangle(name);
         MyList<Rectangle> list = bst.search(rec);
         if (list.getSize() == 0) {
@@ -299,7 +282,7 @@ public class World {
         }
         for (int i = 0; i < list.getSize(); ++i) {
             System.out.print("Rectangle found: ");
-            list.get(i).printRectangle();
+            System.out.println(list.get(i).toString());
         }
 
     }
@@ -309,35 +292,7 @@ public class World {
      * print the rectangle in in-order sequence and depth
      */
     public void dump() {
-        System.out.println("BST dump:");
-        if (bst.getSize() == 0) {
-            System.out.println("Node has depth 0, Value (null)");
-        }
-        else {
-            dumpHelp(bst.getRoot(), 0);
-        }
-        System.out.println("BST size is: " + bst.getSize());
-
-    }
-
-
-    /**
-     * traverse the tree in in-order sequence
-     * 
-     * @param root
-     *            BST root
-     * @param depth
-     *            depth of the node
-     */
-    private void dumpHelp(Node<Rectangle> root, int depth) {
-        if (root == null) {
-            return;
-        }
-
-        dumpHelp(root.getLeft(), depth + 1);
-        System.out.print("Node has depth " + depth + ", Value ");
-        root.getValue().printRectangle();
-        dumpHelp(root.getRight(), depth + 1);
+        bst.dump();
     }
 
 }

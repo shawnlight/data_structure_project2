@@ -20,6 +20,7 @@ public class RectangleTest extends TestCase {
     /**
      * Test basic.
      */
+    @SuppressWarnings("unlikely-arg-type")
     public void testBasic() {
         Rectangle rec1 = new Rectangle("a", 1, 1, 0, 1);
         Rectangle rec2 = new Rectangle("_a", 1, 1, 0, 1);
@@ -31,9 +32,12 @@ public class RectangleTest extends TestCase {
         assertEquals(rec1.notValid(), true);
         assertEquals(rec2.notValid(), true);
         assertEquals(rec3.equals(rec4), true);
+        rec4.setName("__1");
+        assertEquals(rec4.notValid(), true);
         assertEquals(rec5.equals(rec6), false);
         assertEquals(rec6.sameDim(rec7), true);
-        assertEquals(rec6.intersect(1, 1, 1, 1), true);
+        assertEquals(rec6.intersect(rec3), true);
+        assertEquals(rec6.equals("a"), false);
 
     }
 

@@ -29,14 +29,6 @@ public class MyList<T> {
 
 
     /**
-     * clear the list
-     */
-    public void clear() {
-        listSize = 0;
-    }
-
-
-    /**
      * add the element in the end of the list
      * 
      * @param element

@@ -24,20 +24,6 @@ public class Pair {
 
 
     /**
-     * check if two pairs are the same
-     * 
-     * @param pair
-     *            pair to compare with
-     * @return true
-     *         if two pair are the same
-     */
-    public boolean samePair(Pair pair) {
-        return (pair.rec1.equals(rec1) && pair.rec2.equals(rec2)) || (pair.rec2
-            .equals(rec1) && pair.rec1.equals(rec2));
-    }
-
-
-    /**
      * print the pair
      */
     public void printPair() {
@@ -64,27 +50,5 @@ public class Pair {
         str.append(")");
         System.out.println(str);
     }
-
-
-//    /**
-//     * rectangle 1 getter
-//     * 
-//     * @return rec1
-//     *         return rectangle 1
-//     */
-//    public Rectangle getRec1() {
-//        return rec1;
-//    }
-//
-//
-//    /**
-//     * rectangle 2 getter
-//     * 
-//     * @return rec2
-//     *         return rectangle 2
-//     */
-//    public Rectangle getRec2() {
-//        return rec2;
-//    }
 
 }

@@ -151,6 +151,8 @@ public class BST<T extends Comparable<T>> {
 
 
     /**
+     * remove help function
+     * 
      * @param rt
      *            BST root
      * @param e
@@ -214,6 +216,8 @@ public class BST<T extends Comparable<T>> {
 
 
     /**
+     * get the max node in the BST
+     * 
      * @param rt
      *            BST node
      * @return Node<T>
@@ -229,6 +233,8 @@ public class BST<T extends Comparable<T>> {
 
 
     /**
+     * delete the max value node in BST
+     * 
      * @param rt
      *            BST node
      * @return Node<T>
@@ -240,6 +246,42 @@ public class BST<T extends Comparable<T>> {
         }
         rt.setRight(deleteMax(rt.getRight()));
         return rt;
+    }
+
+
+    /**
+     * print the bst value in in-order sequence and depth
+     */
+    public void dump() {
+        System.out.println("BST dump:");
+        if (size == 0) {
+            System.out.println("Node has depth 0, Value (null)");
+        }
+        else {
+            dumpHelp(root, 0);
+        }
+        System.out.println("BST size is: " + size);
+
+    }
+
+
+    /**
+     * traverse the tree in in-order sequence
+     * 
+     * @param rt
+     *            BST root
+     * @param depth
+     *            depth of the node
+     */
+    private void dumpHelp(Node<T> rt, int depth) {
+        if (rt == null) {
+            return;
+        }
+
+        dumpHelp(rt.getLeft(), depth + 1);
+        System.out.print("Node has depth " + depth + ", Value ");
+        System.out.println(rt.getValue().toString());
+        dumpHelp(rt.getRight(), depth + 1);
     }
 
 }

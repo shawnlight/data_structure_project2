@@ -1,4 +1,5 @@
 import student.TestCase;
+
 // -------------------------------------------------------------------------
 /**
  * Test the BST function (you should throw this away for your project)
@@ -34,12 +35,14 @@ public class BSTTest extends TestCase {
         assertEquals(bst1.getSize(), 4);
         bst1.remove(999, null);
         assertEquals(bst1.getSize(), 4);
+        bst1.dump();
         bst1.remove(1, null);
+        bst1.dump();
         bst1.remove(1, null);
         bst1.remove(3, null);
         bst1.remove(4, null);
         assertEquals(bst1.getSize(), 0);
-
+        
     }
 
 }

@@ -147,20 +147,19 @@ public class Rectangle implements Comparable<Rectangle> {
 
 
     /**
-     * check if the rectangle intersect with given dimension
+     * check if two rectangle intersect
      * 
-     * @param x
-     *            x position
-     * @param y
-     *            y position
-     * @param w
-     *            width
-     * @param h
-     *            height
+     * @param rec
+     *            rectangle to compare with
      * @return true
-     *         if the rectangle intersect with given dimension
+     *         if two intersect
+     * 
      */
-    public boolean intersect(int x, int y, int w, int h) {
+    public boolean intersect(Rectangle rec) {
+        int x = rec.getXpos();
+        int y = rec.getYpos();
+        int w = rec.getWidth();
+        int h = rec.getHeight();
         int xmin = Math.max(xpos, x);
         int xmax1 = xpos + width;
         int xmax2 = x + w;
@@ -195,12 +194,12 @@ public class Rectangle implements Comparable<Rectangle> {
 
 
     /**
-     * print the rectangle with name and dimension
-     * 
+     * override the toString method
      */
-    public void printRectangle() {
-        System.out.println("(" + name + ", " + xpos + ", " + ypos + ", " + width
-            + ", " + height + ")");
+    @Override
+    public String toString() {
+        return "(" + name + ", " + xpos + ", " + ypos + ", " + width + ", "
+            + height + ")";
     }
 
 
